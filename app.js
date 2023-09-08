@@ -24,7 +24,7 @@ app.use("/", (req, res, next) => {
 });
 const startServer = async () => {
   try {
-    const server = app.listen(process.env.PORT);
+    const server = app.listen(process.env.PORT || 4000);
     socketHelper.initSocket(server);
     const io = socketHelper.getIo();
     io.on("connection", (socket) => {
