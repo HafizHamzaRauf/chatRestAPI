@@ -18,7 +18,10 @@ app.use(cors(corsOptions));
 app.use(bodyParser.json());
 app.use(authRoutes);
 app.use(messageRoutes);
-
+app.use("/", (req, res, next) => {
+  console.log("first middleware");
+  return res.status(210).json({ message: " no page found" });
+});
 const startServer = async () => {
   try {
     const server = app.listen(process.env.PORT);
